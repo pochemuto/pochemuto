@@ -8,8 +8,7 @@ Alexander Kramarev
 ------------------
 
 Moscow, open to relocation  
-{{avatar}}
-email: [{{ author.email }}]({{ author.email }})
+email: [{{ site.author.email }}]({{ site.author.email }})
 
 **Date of Birth:** July 2, 1989
 
