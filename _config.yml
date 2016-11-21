@@ -73,8 +73,8 @@ footer-links-active:
 
 # Select which share links to show in posts
 share-links-active:
-  twitter: true
-  facebook: true
+  twitter: false
+  facebook: false
   google: false
   linkedin: false
 
