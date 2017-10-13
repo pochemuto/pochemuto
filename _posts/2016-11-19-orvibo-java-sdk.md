@@ -5,7 +5,7 @@ date: 'Sat Nov 19 2016 03:00:00 GMT+0300 (MSK)'
 published: true
 excerpt_separator: <!-- cut -->
 ---
-Is's so fun to turn lights just saying: "Ok, Siri. Turn on the light". But sometime you may want to do it remotely. Most convenient way for me is send simple command to personal telegram bot. There is many libraries in different languages for contolling your Orvibo socket:
+It's so fun to turn lights just saying: "Ok, Siri. Turn on the light". But sometime you may want to do it remotely. Most convenient way for me is send simple command to personal telegram bot. There is many libraries in different languages for contolling your Orvibo socket:
 
 * [Go-orvibo](https://github.com/Grayda/go-orvibo)
 * [Simple PHP class](https://github.com/pcp135/Orvibo)
