@@ -6,10 +6,10 @@ excerpt_separator: <!-- cut -->
 published: true
 ---
 
-Recently I got Wi-Fi socket Orvibo S20. It is quite well device, but it was made before Apple have released their Homekit. So it doesn't support it and you have to use their app to control socket. Lets try to change it.
+Recently I got Wi-Fi socket Orvibo S20. It is quite well device, but it was made before Apple have released their Homekit. So it doesn't support it and you have to use their app to control socket. Let's try to change it.
 
 <!-- cut -->
-Our objective is to be able to turn on and turn off Orvibo S20 via Siri. There is many ways one of them is:
+Our objective is to be able to turn on and turn off Orvibo S20 via Siri. There are many ways one of them is:
 
 - Buy Apple Developer license
 - Create app which implements Homekit and Orvibo protocols both
@@ -47,7 +47,7 @@ cp `npm -g root`/homebridge/config-sample.json ~/.homebridge/config.json
 }
 ```
 
-Replace `username` with random mac-addres. You can generate it by [online generator](http://www.miniwebtool.com/mac-address-generator/). Execute `homebridge`. You may see warnings like following:
+Replace `username` with random mac-address. You can generate it by [the online generator](http://www.miniwebtool.com/mac-address-generator/). Execute `homebridge`. You may see warnings like following:
 
 ```
 *** WARNING *** The program 'node' uses the Apple Bonjour compatibility layer of Avahi.
