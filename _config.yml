@@ -23,6 +23,8 @@ description: A virtual proof that name is awesome!
 
 # List of links in the navigation bar
 navbar-links:
+  Projects:
+    - Mortgage: "http://pochemuto.com/mortgage/"
   About Me: "about"
   # Resources:
   #   - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
