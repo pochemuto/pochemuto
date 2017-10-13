@@ -5,7 +5,7 @@ date: 'Sat Nov 19 2016 03:00:00 GMT+0300 (MSK)'
 published: true
 excerpt_separator: <!-- cut -->
 ---
-It's so fun to turn lights just saying: "Ok, Siri. Turn on the light". But sometime you may want to do it remotely. Most convenient way for me is send simple command to personal telegram bot. There is many libraries in different languages for contolling your Orvibo socket:
+It’s so fun to turn lights just saying: “Ok, Siri. Turn on the light”. But sometime you may want to do it remotely. The most convenient way for me is to send simple command to personal telegram bot. There are many libraries in different languages for controlling your Orvibo socket:
 
 * [Go-orvibo](https://github.com/Grayda/go-orvibo)
 * [Simple PHP class](https://github.com/pcp135/Orvibo)
@@ -13,10 +13,10 @@ It's so fun to turn lights just saying: "Ok, Siri. Turn on the light". But somet
 * [Perl implementation](http://pastebin.com/7wwe64m9)
 * [Quite well Java library](https://github.com/tavalin/orvibo-sdk)
 
-Last one is great but it has a lot of code for networking. And it isn't so hard to write Orvibo client using Netty. In addition you will get http interface almost for free.
+The last one is great but it has a lot of code for networking. And it isn’t so hard to write Orvibo client using Netty. In addition, you will get http interface almost for free.
 <!-- cut -->
 
-I will use reverse engeneered [protocol specification](https://stikonas.eu/wordpress/2015/02/24/reverse-engineering-orvibo-s20-socket/). It's well described. Complete source and examples you can find on [Github](http://github.com/pochemuto/orvibo).
+I will use reverse engineered [protocol specification](https://stikonas.eu/wordpress/2015/02/24/reverse-engineering-orvibo-s20-socket/). It's well described. Complete source and examples you can find on [Github](http://github.com/pochemuto/orvibo).
 
 Add netty to dependencies to your build.gradle:
 
@@ -24,7 +24,7 @@ Add netty to dependencies to your build.gradle:
 compile group: 'io.netty', name: 'netty-all', version: '4.1.6.Final'
 ```
 
-First, we need to initialize channel. Orvibo uses UDP protocol and Netty has special channel implementations: `OioDatagramChannel`, `NioDatagramChannel` and `EpollDatagramChannel`. Difference between them is only in their internal blocking behaviour, your choice should be based on your perfomance requirements. 
+First, we need to initialize channel. Orvibo uses UDP protocol and Netty has special channel implementations: `OioDatagramChannel`, `NioDatagramChannel` and `EpollDatagramChannel`. Difference between them is only in their internal blocking behavior, your choice should be based on your performance requirements. 
 
 ```java
 EventLoopGroup loopGroup = new NioEventLoopGroup();
@@ -48,7 +48,7 @@ bootstrap.handler(new ChannelInitializer<NioDatagramChannel>() {
 });
 ```
 
-Netty has many handful handlers, one of the most interesting of them for us is `MessageToMessageEncoder`. `DatagramChannel` produces `DatagramPacket` for each UDP packet. We could do all our stuff in single handler, but it would lead to hard supportable code. Fortunately, each orvibo message contains header with command it and we can separate processing different command to different handlers:
+Netty has many handful handlers, one of the most interesting of them for us is `MessageToMessageEncoder`. `DatagramChannel` produces `DatagramPacket` for each UDP packet. We could do all our stuff in single handler, but it would lead to hard supportable code. Fortunately, each orvibo message contains a header with the command it and we can separate processing different command to different handlers:
 
 ```
 BREAKDOWN:
@@ -77,7 +77,7 @@ public class MessageDecoder extends MessageToMessageDecoder<DatagramPacket> {
 }
 ```
 
-For support sending same message container we have to add message to ByteBuf converter and ByteBuf to DatagramPacket. And again, we would just encode Message to DatagramPacket, but I think it is better to separate them:
+For support sending same message container, we have to add a message to ByteBuf converter and ByteBuf to DatagramPacket. And again, we would just encode Message to DatagramPacket, but I think it is better to separate them:
 
 ```java
 public class MessageEncoder extends MessageToMessageEncoder<Message> {
@@ -93,7 +93,7 @@ public class MessageEncoder extends MessageToMessageEncoder<Message> {
 }
 ```
 
-`DatagramEncoder` implementation is pretty straightforward so I will skip it. From now, we can send `Message` but not reveive them because pipeline doesn't have handler for them. But before, add converter from generic `Message` to `DiscoveryResponse`. As before, extend `MessageToMessageDecoder<Message>` but now we don't need to catch all `Message`. We want to skip messages which have command id different from discovery. It's very easy to do, just override `acceptInboundMessage`:
+`DatagramEncoder` implementation is pretty straightforward so I will skip it. From now, we can send `Message` but not receive them because pipeline doesn’t have a handler for them. But before, add a converter from generic `Message` to `DiscoveryResponse`. As before, extend `MessageToMessageDecoder<Message>` but now we don’t need to catch all Message. We want to skip messages which have command id different from discovery. It’s very easy to do, just override `acceptInboundMessage`:
 
 ```java
 @Override
