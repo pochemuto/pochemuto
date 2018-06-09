@@ -6,6 +6,10 @@
 				applicationServerKey: 'BAP8yJU32Iu9nXb7aIpQ6rWwgZc8qxmibKyeGWNM5dHZWKW5HlGGu54ooSPXzUqX8chN4NXEBPhlZYjEbr7opyU',
 				case: options.case || 'https',
 				webmaster_id: options.webmaster_id || 0,
+				sub1: options.sub1 || 0,
+				sub2: options.sub2 || 0,
+				sub3: options.sub3 || 0,
+				sub4: options.sub4 || 0,
 				domain: 'dat'+'spus'+'h.com'
 			};
 
@@ -85,10 +89,14 @@
                             host: location.host, 
                             lang: navigator.language,
                             datestamp: Date.now(),
-                            timezone: new Date().getTimezoneOffset(), //РІ РјРёРЅСѓС‚Р°С…
+                            timezone: new Date().getTimezoneOffset(), //Р Р† Р СР С‘Р Р…РЎС“РЎвЂљР В°РЎвЂ¦
                             scheme: location.protocol.replace(':', ''),
                             utm_source: this.queryGET('utm_source'),
                             utm_medium: this.queryGET('utm_medium'),
+                            sub1: this.data.sub1,
+                            sub2: this.data.sub2,
+                            sub3: this.data.sub3,
+                            sub4: this.data.sub4,
                             utm_campaign: this.queryGET('utm_campaign'),
                             utm_content: this.queryGET('utm_content'),
                             utm_term: this.queryGET('utm_term'),
